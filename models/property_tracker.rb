@@ -70,7 +70,7 @@ attr_accessor :address, :value, :number_of_bedrooms, :buy_let_status
 
   def PropertyTracker.find(id)
     db = PG.connect({dbname: 'property_tracker', host: 'localhost'})
-    sql = "SELECT * FROM properties where id = $1"
+    sql = "SELECT * FROM properties WHERE id = $1"
     values = [id]
     db.prepare("find_1", sql)
     result = db.exec_prepared("find_1", values)
@@ -81,7 +81,7 @@ attr_accessor :address, :value, :number_of_bedrooms, :buy_let_status
 
   def PropertyTracker.find_by_address(address)
     db = PG.connect({dbname: 'property_tracker', host: 'localhost'})
-    sql = "SELECT * FROM properties where address = $1"
+    sql = "SELECT * FROM properties WHERE address = $1"
     values = [address]
     db.prepare("find_1", sql)
     result = db.exec_prepared("find_1", values)
